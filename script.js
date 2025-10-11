@@ -1,4 +1,4 @@
-let boxes = document.querySelector(".box"); //all the 9 buttons are accessed.
+let boxes = document.querySelectorAll(".box"); //all the 9 buttons are accessed.
 let reset = document.querySelector("#reset-btn"); //reset button is accessed.
 
 // player gets alternate turns.
@@ -11,3 +11,32 @@ const winPatterns = [
     [0,4,8],[2,4,6]
 ]
 
+// adding eventlistener to each buttons
+boxes.forEach((box) => {
+    box.addEventListener("click", () => {
+        if(turn0) { // player0 turn
+            box.innerText = "O";
+            turn0 = false;
+        } else { // playerX turn
+            box.innerText = "X";
+            turn0 = true;
+        }
+        box.disabled = true;
+        
+        checkWinner();
+    })
+})
+
+const checkWinner = () => {
+    for (let pattern of winPatterns) {
+        let pos1Val = boxes[pattern[0]].innerText;
+        let pos2Val = boxes[pattern[1]].innerText;
+        let pos3Val = boxes[pattern[2]].innerText;
+
+        if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
+            if (pos1Val === pos2Val && pos2Val === pos3Val) {
+                console.log("WINNER",pos1Val);
+            }
+        }
+    }
+}
