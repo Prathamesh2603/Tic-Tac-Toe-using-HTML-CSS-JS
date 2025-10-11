@@ -30,6 +30,7 @@ body{
     font-size: 8vmin;
     color: white;
     background-color: rgb(0, 162, 255);
+    cursor: pointer;
 }
 #reset-btn {
     padding: 1rem;
