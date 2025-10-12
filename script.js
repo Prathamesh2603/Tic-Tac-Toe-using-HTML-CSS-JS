@@ -21,6 +21,8 @@ const resetGame = () => {
     for (const box of boxes) {
         box.innerText = "";
         box.disabled = false;
+        box.classList.remove("o-style");
+        box.classList.remove("x-style");
     }
 }
 
@@ -32,6 +34,8 @@ const newGame = () => {
     for (const box of boxes) {
         box.innerText = "";
         box.disabled = false;
+        box.classList.remove("o-style");
+        box.classList.remove("x-style");
     }
 }
 
@@ -40,9 +44,11 @@ boxes.forEach((box) => {
     box.addEventListener("click", () => {
         if(turn0) { // player0 turn
             box.innerText = "O";
+            box.classList.add("o-style");
             turn0 = false;
         } else { // playerX turn
             box.innerText = "X";
+            box.classList.add("x-style");
             turn0 = true;
         }
         box.disabled = true;
