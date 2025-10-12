@@ -1,5 +1,8 @@
 let boxes = document.querySelectorAll(".box"); //all the 9 buttons are accessed.
 let reset = document.querySelector("#reset-btn"); //reset button is accessed.
+let winnerBoard = document.querySelector(".winner-board"); 
+let winnerName = document.querySelector("#winner-name");
+let transparentDiv = document.querySelector(".transparent-div");
 
 // player gets alternate turns.
 let turn0 = true; //playerX, player0
@@ -35,7 +38,9 @@ const checkWinner = () => {
 
         if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
             if (pos1Val === pos2Val && pos2Val === pos3Val) {
-                console.log("WINNER",pos1Val);
+                transparentDiv.classList.remove("hide-div");
+                winnerBoard.classList.remove("hide-div");
+                winnerName.innerText = `Winner ${pos1Val}`; 
             }
         }
     }
