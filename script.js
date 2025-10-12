@@ -1,5 +1,6 @@
 let boxes = document.querySelectorAll(".box"); //all the 9 buttons are accessed.
-let reset = document.querySelector("#reset-btn"); //reset button is accessed.
+let resetBtn = document.querySelector(".reset-btn"); //reset button is accessed.
+let newGameBtn = document.querySelector(".new-game-btn"); // new Game button is accessed.
 let winnerBoard = document.querySelector(".winner-board"); 
 let winnerName = document.querySelector("#winner-name");
 let transparentDiv = document.querySelector(".transparent-div");
@@ -13,6 +14,26 @@ const winPatterns = [
     [0,3,6],[1,4,7],[2,5,8],
     [0,4,8],[2,4,6]
 ]
+
+// Reset Game button
+const resetGame = () => {
+    turn0 = true;
+    for (const box of boxes) {
+        box.innerText = "";
+        box.disabled = false;
+    }
+}
+
+// New Game button
+const newGame = () => {
+    turn0 = true;
+    transparentDiv.classList.add("hide-div");
+    winnerBoard.classList.add("hide-div");
+    for (const box of boxes) {
+        box.innerText = "";
+        box.disabled = false;
+    }
+}
 
 // adding eventlistener to each buttons
 boxes.forEach((box) => {
@@ -45,3 +66,6 @@ const checkWinner = () => {
         }
     }
 }
+
+resetBtn.addEventListener("click", resetGame);
+newGameBtn.addEventListener("click", newGame);
